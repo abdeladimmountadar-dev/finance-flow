@@ -1,0 +1,446 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <span>◈</span>
+            <h2>Finance<span>Flow</span></h2>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">MAIN MENU</p>
+
+            <a href="#" class="nav-link active" data-page="dashboard">▦ Dashboard</a>
+            <a href="#" class="nav-link" data-page="transactions">⇄ Transactions</a>
+            <a href="#" class="nav-link" data-page="income">↗ Income</a>
+            <a href="#" class="nav-link" data-page="expenses">↙ Expenses</a>
+
+            <p class="nav-title">MY FINANCES</p>
+
+            <a href="#" class="nav-link" data-page="savings">◉ Savings</a>
+            <a href="#" class="nav-link" data-page="investing">◈ Investing</a>
+            <a href="#" class="nav-link" data-page="sadaqa">♡ Sada9a</a>
+
+            <p class="nav-title">MANAGEMENT</p>
+
+            <a href="#" class="nav-link" data-page="reports">▤ Reports & PDF</a>
+            <a href="#" class="nav-link" data-page="settings">⚙ Settings</a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="user-avatar">N</div>
+            <div>
+                <h4>My Account</h4>
+                <p>Personal Finance</p>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOP HEADER -->
+        <header class="top-header">
+
+            <div>
+                <h1>Welcome Back!</h1>
+                <p>Here's your financial overview.</p>
+            </div>
+
+            <div class="header-actions">
+                <button class="icon-btn" aria-label="Notifications">♧</button>
+                <button class="icon-btn" aria-label="Settings">⚙</button>
+                <div class="profile">
+                    <div class="profile-avatar">N</div>
+                    <div>
+                        <h4>My Profile</h4>
+                        <p>Personal Account</p>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- DASHBOARD PAGE -->
+        <section class="page-section active" id="dashboard">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Dashboard</h2>
+                    <p>Track and manage your money.</p>
+                </div>
+
+                <button class="primary-btn" id="addTransactionBtn">
+                    + Add Transaction
+                </button>
+            </div>
+
+
+            <!-- SUMMARY CARDS -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <p>Total Balance</p>
+                    <h2 id="totalBalance">0.00 MAD</h2>
+                    <span>Available balance</span>
+                </div>
+
+                <div class="stat-card">
+                    <p>Total Income</p>
+                    <h2 id="totalIncome">0.00 MAD</h2>
+                    <span>All income</span>
+                </div>
+
+                <div class="stat-card">
+                    <p>Total Expenses</p>
+                    <h2 id="totalExpenses">0.00 MAD</h2>
+                    <span>All expenses</span>
+                </div>
+
+                <div class="stat-card">
+                    <p>Total Savings</p>
+                    <h2 id="totalSavings">0.00 MAD</h2>
+                    <span>Saved money</span>
+                </div>
+
+                <div class="stat-card">
+                    <p>Total Investments</p>
+                    <h2 id="totalInvestments">0.00 MAD</h2>
+                    <span>Invested money</span>
+                </div>
+
+                <div class="stat-card">
+                    <p>Total Sada9a</p>
+                    <h2 id="totalSadaqa">0.00 MAD</h2>
+                    <span>Charity donations</span>
+                </div>
+
+            </div>
+
+
+            <!-- CHART AND OVERVIEW -->
+            <div class="dashboard-grid">
+
+                <div class="panel chart-panel">
+                    <div class="panel-header">
+                        <div>
+                            <h3>Financial Overview</h3>
+                            <p>Income and expenses</p>
+                        </div>
+
+                        <select id="chartPeriod">
+                            <option value="week">Weekly</option>
+                            <option value="month">Monthly</option>
+                            <option value="year">Yearly</option>
+                        </select>
+                    </div>
+
+                    <div class="chart-container" id="financeChart">
+                        <p>Financial chart will appear here.</p>
+                    </div>
+                </div>
+
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <h3>Quick Actions</h3>
+                    </div>
+
+                    <div class="quick-actions">
+                        <button data-action="income">+ Add Income</button>
+                        <button data-action="expenses">− Add Expense</button>
+                        <button data-action="savings">◉ Add Savings</button>
+                        <button data-action="investing">◈ Add Investment</button>
+                        <button data-action="sadaqa">♡ Add Sada9a</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- RECENT TRANSACTIONS -->
+            <div class="panel transactions-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h3>Recent Transactions</h3>
+                        <p>Your latest financial activities</p>
+                    </div>
+
+                    <button class="secondary-btn" data-page="transactions">
+                        View All
+                    </button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="recentTransactions">
+                            <tr>
+                                <td colspan="4">No transactions yet.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TRANSACTIONS PAGE -->
+        <section class="page-section" id="transactions">
+            <div class="section-heading">
+                <div>
+                    <h2>Transaction History</h2>
+                    <p>All your financial transactions.</p>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="filters">
+                    <input type="search" id="transactionSearch" placeholder="Search transactions...">
+
+                    <select id="transactionFilter">
+                        <option value="all">All Types</option>
+                        <option value="income">Income</option>
+                        <option value="expenses">Expenses</option>
+                        <option value="savings">Savings</option>
+                        <option value="investing">Investing</option>
+                        <option value="sadaqa">Sada9a</option>
+                    </select>
+
+                    <input type="date" id="filterDate">
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Type</th>
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="allTransactions">
+                            <tr>
+                                <td colspan="6">No transactions yet.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- INCOME PAGE -->
+        <section class="page-section" id="income">
+            <div class="section-heading">
+                <div>
+                    <h2>Income</h2>
+                    <p>Manage all your income.</p>
+                </div>
+            </div>
+            <div class="panel">
+                <h3>Income Management</h3>
+                <p>Record and track your income here.</p>
+            </div>
+        </section>
+
+
+        <!-- EXPENSES PAGE -->
+        <section class="page-section" id="expenses">
+            <div class="section-heading">
+                <div>
+                    <h2>Expenses</h2>
+                    <p>Track where your money goes.</p>
+                </div>
+            </div>
+            <div class="panel">
+                <h3>Expense Management</h3>
+                <p>Record and manage your expenses here.</p>
+            </div>
+        </section>
+
+
+        <!-- SAVINGS PAGE -->
+        <section class="page-section" id="savings">
+            <div class="section-heading">
+                <div>
+                    <h2>Savings</h2>
+                    <p>Build your financial goals.</p>
+                </div>
+            </div>
+            <div class="panel">
+                <h3>Saving Goals</h3>
+                <p>Track your savings progress here.</p>
+            </div>
+        </section>
+
+
+        <!-- INVESTING PAGE -->
+        <section class="page-section" id="investing">
+            <div class="section-heading">
+                <div>
+                    <h2>Investing</h2>
+                    <p>Manage your investment portfolio.</p>
+                </div>
+            </div>
+            <div class="panel">
+                <h3>Investment Portfolio</h3>
+                <p>Track your investments and profits here.</p>
+            </div>
+        </section>
+
+
+        <!-- SADAQA PAGE -->
+        <section class="page-section" id="sadaqa">
+            <div class="section-heading">
+                <div>
+                    <h2>Sada9a</h2>
+                    <p>Track your charity and donations.</p>
+                </div>
+            </div>
+            <div class="panel">
+                <h3>Charity History</h3>
+                <p>Manage your donations here.</p>
+            </div>
+        </section>
+
+
+        <!-- REPORTS PAGE -->
+        <section class="page-section" id="reports">
+            <div class="section-heading">
+                <div>
+                    <h2>Reports & PDF</h2>
+                    <p>Generate financial reports.</p>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h3>Export Financial Report</h3>
+
+                <div class="report-controls">
+                    <select id="reportPeriod">
+                        <option value="daily">Daily Report</option>
+                        <option value="weekly">Weekly Report</option>
+                        <option value="monthly">Monthly Report</option>
+                        <option value="custom">Custom Period</option>
+                    </select>
+
+                    <input type="date" id="reportStart">
+                    <input type="date" id="reportEnd">
+
+                    <button class="primary-btn" id="exportPDF">
+                        Download PDF
+                    </button>
+                </div>
+
+                <div id="reportPreview">
+                    Your report preview will appear here.
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SETTINGS PAGE -->
+        <section class="page-section" id="settings">
+            <div class="section-heading">
+                <div>
+                    <h2>Settings</h2>
+                    <p>Customize your finance dashboard.</p>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h3>Account Settings</h3>
+                <p>Manage your preferences here.</p>
+            </div>
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ADD TRANSACTION MODAL -->
+<div class="modal-overlay" id="transactionModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+            <h2>Add Transaction</h2>
+            <button id="closeModal" type="button">×</button>
+        </div>
+
+        <form id="transactionForm">
+
+            <label for="transactionType">Transaction Type</label>
+            <select id="transactionType" required>
+                <option value="">Select Type</option>
+                <option value="income">Income</option>
+                <option value="expenses">Expense</option>
+                <option value="savings">Saving</option>
+                <option value="investing">Investment</option>
+                <option value="sadaqa">Sada9a</option>
+            </select>
+
+            <label for="transactionDescription">Description</label>
+            <input type="text" id="transactionDescription"
+                   placeholder="Enter description" required>
+
+            <label for="transactionAmount">Amount (MAD)</label>
+            <input type="number" id="transactionAmount"
+                   min="0.01" step="0.01" placeholder="0.00" required>
+
+            <label for="transactionCategory">Category</label>
+            <input type="text" id="transactionCategory"
+                   placeholder="Enter category">
+
+            <label for="transactionDate">Date</label>
+            <input type="date" id="transactionDate" required>
+
+            <div class="modal-actions">
+                <button type="button" id="cancelTransaction">Cancel</button>
+                <button type="submit" class="primary-btn">Save Transaction</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
